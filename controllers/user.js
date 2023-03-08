@@ -28,7 +28,8 @@ exports.submitSelection = async (req, res) => {
     email,
     wa_number,
     food,
-    drink
+    drink,
+    url
   } = req.body;
 
   try {
@@ -56,7 +57,7 @@ exports.submitSelection = async (req, res) => {
       await Drink.findByIdAndUpdate({ _id: newDrink._id }, {total_selected: newDrink.selected_by.length}, {new: true})
     }
 
-    const updatedUser = await User.findByIdAndUpdate({ _id: userId }, {foodChoice: food, drinkChoice: drink, hasSubmit: true}, {new: true})
+    const updatedUser = await User.findByIdAndUpdate({ _id: userId }, {foodChoice: food, drinkChoice: drink, hasSubmit: true, url}, {new: true})
     return res.status(200).json(updatedUser)
   } 
   catch (error) {
