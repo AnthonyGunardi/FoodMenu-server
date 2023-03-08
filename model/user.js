@@ -29,7 +29,8 @@ const userSchema = new Schema({
     },
     url: {
       type:String,
-      required:false        
+      required:false,
+      default: ''        
   },
     
 });
